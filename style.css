@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap'); /*Font importada*/
+
+
+/* O * é um seletor universal seleciona todos os elementos da página */
+/* Box-sizing: controla largura e altura de todos os elementos do * */
+/* border box no box-sizing: siginifica que a largura e a altura incluirão o preenchimento (padding) e a borda (border), ou seja o tamanho do elemento será o mesmo idenpendente da borda aplicada */
+* {
+  box-sizing: border-box;
+  }
+
+body {
+  font-family: 'Muli', sans-serif; /*Define a font Muli, caso ela não esteja definida a fonte sens será utilizada*/
+  display: flex; /* Especifica que o bory será tratado como flexível*/
+  align-items: center; /*Alinha verticalmente os elementos dentro do body*/
+  justify-content: center;/*Alinha horizontalemente os elementos dentro do body*/
+  height: 100vh;/*A altura do body ocupa 100% da altura da janela de visualização. Ou seja, ocupa toda altura da janela do navegador*/
+  overflow: hidden; /*Oculta todo conteúdo que ultrapassa os limites do body. Não gerando barra de rolagem*/
+  margin: 0; /*Remove todas as magens do body, garantindo que todo conteúdo esteka centralizado*/
+}  
+
+  /* O uso de flexbox, a centralização vertical e horizontal, e a definição de altura 
+  em relação à altura da janela de visualização são técnicas comuns para criar layouts 
+  responsivos e centrados na web. */
+
+.container { 
+  display: flex; /*Define que os elementos dessa classe serão tratados de maneira flexível*/
+  width: 90vw; /*Os elementos da classe tenham largura de 90% da largura da tela do computador*/
+}  
+
+/* Configura Painel */
+.panel {
+  background-size: cover; /*Imagem de fundo se ajusta para cobrir todo espaço disponível*/
+  background-position: center; /*Coloca a imagem de fundo no meio do painel*/
+  background-repeat: no-repeat; /*Garante que a imagem de fundo apareça só uma vez, não repita*/
+  height: 80vh; /*Define que a altura do painel ocupe 80% da atela*/
+  border-radius: 50px; /*Faz com que as bordas fiquem arredondadas*/
+  color: #fff; /*Define a cor branca para as letras dentro do painel*/
+  cursor: pointer; /*Muda o cursor quando clicamos para a mão*/
+  flex: 0.5; /*Diz como o painel deve se comportar quando está dentro do layout flexível. Significa que ele vai ocupar metade do espaço disponível*/
+  margin: 10px; /*Cria um epaço de 10px ao redor do painel*/
+  position: relative; /*A posição do painel é relativa, ou seja pode ser ajustada em relação a seu lugar normal na tela*/
+  -webkit-transition: all 700ms ease-in; /*Realiza uma transição suave de 700ms entre os paineis*/
+}  
+
+/* Configura texto do painel */
+.panel h3 {
+  font-size: 24px; /*Tamanho do texto dentro do h3*/
+  position: relative; /*A posição do elemento é relativa, ou seja pode ser ajustada em relação a seu lugar normal na tela*/
+  top: 20px; /*Move o texto 20px para baixo, cria um espaço de 20px entre o título e o conteúdo abaixo*/
+  left: 20px;/*Move o elemento para esquerda em relação a sua posição normal, cria um espaço de 20px em relação ao titulo e o lado esquerdo do painel*/
+  margin: 0; /*Remove as margens ao redor do titulo*/
+  opacity: 0; /*Define a opacidade 0, siginifica que ele ficará complentamente transparente*/
+}
+
+.panel.active { /*O .painel.active aplica estilo a elementos que possuem ambas as classes*/
+  flex: 5; /* Ajusta o flex do elemento, fazendo com que ele ocupe cinco vezes mais espaço flexível em um layout*/
+}
+
+.panel.active h3 { /*Aplica estilo ao h3 em elementos que possuem o .painel e o .active*/
+  opacity: 1; /*Define a opacidade 1, ou seja o texto ficará totalmente visível*/
+  transition: opacity 0.3s ease-in 0.4s;/*Define uma transição suave para a opacidade, a transição de opac. irá dura 0.3s com entrada suave (ease-in). O valor 0.4 espacifica um atraso de 0.4s antes do início da transição*/
+}
+
+@media (max-width: 480px) { /*Bloco de regras de estilo que se aplica quando a largura da tela é menor ou igual a 480px*/
+  container { /* Os elementos com a tag container terão largura 100% da janela de visualização*/
+    width: 100vw; 
+  }
+
+  .panel:nth-of-type(4), /*Os Paineis 4 e 5 não serão exibidos, ou seja, serão ocultos, adaptando-se ao espaço da tela menor. Isso é parte de um design responsivo para dispositivos móveis.*/
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
+
